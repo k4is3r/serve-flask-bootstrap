@@ -1,12 +1,16 @@
-from flask import Flask, request
+from flask import Flask, request, redirect , make_response
 
 app = Flask(__name__)
 
 @app.route('/')
-def hello():
-    user_ip= request.remote_addr
-    return 'heello from hell, tu IP es {}'.format(user_ip)
+def index():
+    user_ip= request.remote_addr 
+    response = make_response(redirect('/hello'))
+    response.set_cookie('user_ip', user_ip)
+    return response
 
-@app.route('/hi')
-def hi():
-    return 'Weel this is another gretting'
+
+@app.route('/hello')
+def hello():
+    user_ip = request.cookies.get('user_ip')
+    return 'Hello from hell, tu IP es {}'.format(user_ip)
