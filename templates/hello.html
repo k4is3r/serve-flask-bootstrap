@@ -3,3 +3,9 @@
 {% else %}
     <a href="{{ url_for('index') }}">Go back to Home<a/>
 {% endif %}
+
+<ul>
+{% for todo in todos %}
+    <li>{{ todo }}</li>
+{% endfor %}
+</ul>
