@@ -5,6 +5,9 @@
     <title>{% block title %}Flask IWDevelop | {% endblock %}</title>
 </head>
 <body>
+    <header>
+        {% include 'navbar.html' %}
+    </header>
     {% block content %}
     {% endblock %}    
 </body>
