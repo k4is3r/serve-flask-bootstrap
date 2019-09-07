@@ -36,11 +36,13 @@ def index():
 def hello():
     #user_ip = request.cookies.get('user_ip')
     user_ip = session.get('user_ip')
+    login_form = LoginForm()
     context = {
         'user_ip' : user_ip,
         'todos' : todos,
+        'login_form' : login_form,
     }
-    
+
     return render_template('hello.html', **context)
 
 @app.errorhandler(404)
