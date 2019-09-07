@@ -1,6 +1,11 @@
 from flask import Flask, request, redirect , make_response, render_template, session 
 #importin bootstrap
 from flask_bootstrap import Bootstrap
+#importin whta the form in flask
+from flask_wtf import FlaskForm 
+from wtforms.fields import StringField, PasswordField, SubmitField
+#importin a data validator from WTF
+from wtforms.validators import DataRequired
 
 
 app = Flask(__name__)
@@ -11,6 +16,12 @@ app.config['SECRET_KEY'] = 'SUPER SECRETO'
 
 
 todos = ['Hacer cafe','Comprar Macbook','Mandar correos','Arreglar presupuesto','Comprar accesorios']
+
+class LoginForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Send')
+
 
 @app.route('/')
 def index():

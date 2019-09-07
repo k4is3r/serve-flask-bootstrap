@@ -5,15 +5,17 @@
     Bienvenido 
 {% endblock %}
 {% block content %}
-{% if user_ip %}
-    <h1>Hello from k4is3r server, ur ip is {{ user_ip }} </h1>
-{% else %}
-    <a href="{{ url_for('index') }}">Go back to Home<a/>
-{% endif %}
-
-<ul>
-{% for todo in todos %}
-    {{ macros.render_todo(todo) }}
-{% endfor %}
-</ul>
+    {% if user_ip %}
+        <h1>Hello from k4is3r server, ur ip is {{ user_ip }} </h1>
+    {% else %}
+        <a href="{{ url_for('index') }}">Go back to Home<a/>
+    {% endif %}
+    <div class="container">
+    
+    </div>
+    <ul>
+        {% for todo in todos %}
+            {{ macros.render_todo(todo) }}
+        {% endfor %}
+    </ul>
 {% endblock %}
