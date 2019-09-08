@@ -1,11 +1,13 @@
 from flask import Flask, request, redirect , make_response, render_template, session, url_for, flash 
-#importin bootstrap
+#importing bootstrap
 from flask_bootstrap import Bootstrap
-#importin whta the form in flask
-from flask_wtf import FlaskForm 
+#importing whta the form in flask
+from flask_wtf import FlaskForm
 from wtforms.fields import StringField, PasswordField, SubmitField
-#importin a data validator from WTF
+#importing a data validator from WTF
 from wtforms.validators import DataRequired
+#importing for use in the testing section
+import unittest
 
 
 app = Flask(__name__)
@@ -21,6 +23,12 @@ class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Send')
+
+#defining the test section
+@app.cli.command()
+def test():
+    tests = unittest.TestLoader().discover('tests')
+    unittest.TextTestRunner().run(tests)
 
 
 @app.route('/')
