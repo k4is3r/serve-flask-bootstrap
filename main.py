@@ -8,14 +8,10 @@ from wtforms.fields import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired
 #importing for use in the testing section
 import unittest
+from app import create_app
 
 
-app = Flask(__name__)
-bootstrap = Bootstrap(app)
-
-#setting some configuration for implent flask session
-app.config['SECRET_KEY'] = 'SUPER SECRETO'
-
+app = create_app()
 
 todos = ['Hacer cafe','Comprar Macbook','Mandar correos','Arreglar presupuesto','Comprar accesorios']
 
