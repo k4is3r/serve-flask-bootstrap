@@ -1,24 +1,15 @@
-from flask import Flask, request, redirect , make_response, render_template, session, url_for, flash 
+from flask import request, redirect , make_response, render_template, session, url_for, flash 
 #importing bootstrap
 from flask_bootstrap import Bootstrap
-#importing whta the form in flask
-from flask_wtf import FlaskForm
-from wtforms.fields import StringField, PasswordField, SubmitField
-#importing a data validator from WTF
-from wtforms.validators import DataRequired
 #importing for use in the testing section
 import unittest
 from app import create_app
-
+from app.forms import LoginForm
 
 app = create_app()
 
 todos = ['Hacer cafe','Comprar Macbook','Mandar correos','Arreglar presupuesto','Comprar accesorios']
 
-class LoginForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    submit = SubmitField('Send')
 
 #defining the test section
 @app.cli.command()
