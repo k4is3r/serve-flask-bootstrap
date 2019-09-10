@@ -5,15 +5,13 @@ from flask_bootstrap import Bootstrap
 import unittest
 from app import create_app
 from app.forms import LoginForm
-from app.firestore_service import get_users
+from app.firestore_service import get_users, get_todos
 
 app = create_app()
 
-todos = ['Hacer cafe','Comprar Macbook','Mandar correos','Arreglar presupuesto','Comprar accesorios']
-
 
 #defining the test section
-@app.cli.command()
+@app.cli.command() 
 def test():
     tests = unittest.TestLoader().discover('tests')
     unittest.TextTestRunner().run(tests)
@@ -35,11 +33,10 @@ def hello():
     username = session.get('username')
     context = {
         'user_ip' : user_ip,
-        'todos' : todos,
+        'todos' : get_todos(user_id=username) ,
         'username' : username,
     }
 
-    
     return render_template('hello.html', **context)
 
 @app.errorhandler(404)
