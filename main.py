@@ -5,6 +5,7 @@ from flask_bootstrap import Bootstrap
 import unittest
 from app import create_app
 from app.forms import LoginForm
+from app.firestore_service import get_users
 
 app = create_app()
 
@@ -38,6 +39,7 @@ def hello():
         'username' : username,
     }
 
+    
     return render_template('hello.html', **context)
 
 @app.errorhandler(404)
