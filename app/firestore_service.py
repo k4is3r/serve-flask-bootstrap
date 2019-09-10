@@ -7,13 +7,9 @@ firebase_admin.initialize_app(credential)
 
 db = firestore.client()
 
+#User functions
 def get_users():
     return db.collection('users').get()
-
-def get_todos(user_id):
-    return db.collection('users')\
-        .document(user_id)\
-            .collection('todos').get()
 
 def get_user(user_id):
     return db.collection('users')\
@@ -22,3 +18,13 @@ def get_user(user_id):
 def user_put(user_data):
     user_ref = db.collection('users').document(user_data.username)
     user_ref.set({ 'password': user_data.password })
+
+# Too functions
+def get_todos(user_id):
+    return db.collection('users')\
+        .document(user_id)\
+            .collection('todos').get()
+
+def put_todos(user_id, description):
+    todos_collection_ref = db.collection('users').document(user_id).collection('todos')
+    todos_collection_ref.add({'description':description})
