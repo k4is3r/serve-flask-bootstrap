@@ -19,7 +19,7 @@
         {{ wtf.quick_form(todo_form) }}
     </div>
     <br>
-    <ul>
+    <ul class="list-group">
         {% for todo in todos %}
             {{ macros.render_todo(todo) }}
         {% endfor %}
