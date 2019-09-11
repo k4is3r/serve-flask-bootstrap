@@ -31,5 +31,5 @@ def put_todos(user_id, description):
 
 def delete_todo(user_id, todo_id):
     todo_ref = db.collection('users').document(user_id)\
-        .collection('todos').document('todo_id')
+        .collection('todos').document(todo_id)
     todo_ref.delete()
