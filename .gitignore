@@ -2,5 +2,6 @@
 __pycache__
 *.jpg
 .vscode/
-
-
+*.pyc
+*.gcloudignore
+index.yaml
